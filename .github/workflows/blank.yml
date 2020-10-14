@@ -47,4 +47,4 @@ jobs:
         if: success()
         with:
           name: TrinityCore335linuxserver
-          path: server335
+          path: /home/runner/server335
