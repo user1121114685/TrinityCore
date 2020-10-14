@@ -44,5 +44,5 @@ jobs:
         uses: actions/upload-artifact@master
         if: success()
         with:
-        name: TrinityCore335linuxserver
-        path: server335
+          name: TrinityCore335linuxserver
+          path: server335
