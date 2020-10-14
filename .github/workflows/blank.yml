@@ -27,8 +27,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y git clang cmake make gcc g++ libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev p7zip default-libmysqlclient-dev
-          sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
-          sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
+          #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
+          #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
 
       - name: 克隆TrinityCore
         run: sudo git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
