@@ -1,0 +1,48 @@
+# This is a basic workflow to help you get started with Actions
+
+name: TrinityCore335编译
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a set of commands using the runners shell
+      - name: 准备环境
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev mariadb-server p7zip default-libmysqlclient-dev
+          sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
+          sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
+
+- name: 克隆TrinityCore
+        run: sudo git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
+- name: 开始编译
+        run: |
+sudo mkdir server335
+cd TrinityCore
+sudo mkdir build
+cd build
+cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
+make -j $(nproc) install
+- name: 上传固件
+if: success()
+  uses: actions/upload-artifact@master
+  with:
+    name: TrinityCore335linuxserver
+    path: server335
