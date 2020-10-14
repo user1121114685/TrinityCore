@@ -38,7 +38,7 @@ jobs:
           cd TrinityCore
           sudo mkdir build
           cd build
-          cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
+          cmake ../ -DCMAKE_INSTALL_PREFIX=server335
           make -j $(nproc) install
       - name: 上传固件
         uses: actions/upload-artifact@master
