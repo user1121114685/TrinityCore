@@ -30,19 +30,19 @@ jobs:
           sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
           sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
 
-- name: 克隆TrinityCore
+      - name: 克隆TrinityCore
         run: sudo git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
-- name: 开始编译
+      - name: 开始编译
         run: |
-sudo mkdir server335
-cd TrinityCore
-sudo mkdir build
-cd build
-cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
-make -j $(nproc) install
-- name: 上传固件
-if: success()
-  uses: actions/upload-artifact@master
-  with:
-    name: TrinityCore335linuxserver
-    path: server335
+          sudo mkdir server335
+          cd TrinityCore
+          sudo mkdir build
+          cd build
+          cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
+          make -j $(nproc) install
+      - name: 上传固件
+        if: success()
+          uses: actions/upload-artifact@master
+            with:
+              name: TrinityCore335linuxserver
+                path: server335
