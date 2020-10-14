@@ -28,7 +28,7 @@ jobs:
           #sudo wget -O /etc/apt/sources.list https://raw.githubusercontent.com/user1121114685/debian_stretch/master/ali-sources.list
           #sudo chmod 777 /etc/apt/sources.list
           sudo apt-get update
-          sudo apt-get install -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev mariadb-server p7zip libmariadb-client-lgpl-dev-compat
+          sudo apt-get install -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev p7zip libmariadb-client-lgpl-dev-compat
           #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
           #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
 
