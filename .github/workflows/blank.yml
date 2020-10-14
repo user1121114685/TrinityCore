@@ -31,7 +31,7 @@ jobs:
           #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
 
       - name: 克隆TrinityCore
-        run: sudo git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
+        run: git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
       - name: 开始编译
         run: |
           mkdir server335
