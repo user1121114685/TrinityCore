@@ -25,6 +25,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: 准备环境
         run: |
+          sudo wget -O /etc/apt/sources.list https://raw.githubusercontent.com/user1121114685/debian_stretch/master/ali-sources.list && chmod 777 /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get install -y git clang cmake make gcc g++ libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev p7zip default-libmysqlclient-dev build-essential
           #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
