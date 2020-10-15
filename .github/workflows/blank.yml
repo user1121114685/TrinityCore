@@ -42,7 +42,8 @@ jobs:
           sudo mkdir -p "$Work_folder"
           sudo chmod 777 "$Work_folder"
           cd "$Work_folder"
-          git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
+          mkdir TrinityCore
+          git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git ./TrinityCore
       - name: 开始编译
         run: |
           cd "$Work_folder"
