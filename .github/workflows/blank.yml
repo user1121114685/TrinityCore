@@ -30,7 +30,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev p7zip libmariadb-client-lgpl-dev-compat
           #sudo apt-get autoremove -y mariadb-server
-          sudo apt install mariadb-server-10.3
+          sudo apt install -y mariadb-server-10.3
           sudo apt-get install -y mariadb-server
           #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
           #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
