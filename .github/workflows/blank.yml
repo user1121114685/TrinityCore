@@ -34,20 +34,28 @@ jobs:
           sudo apt-get install -y mariadb-server
           #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
           #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
-
+      - name: 创建工作文件夹
+        env:
+          #你希望服务端放在你电脑的什么位置。我这里是/mnt/sdb
+          Work_folder: ${{ /mnt/sdb }}
       - name: 克隆TrinityCore
-        run: git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
+        run: |
+          sudo mkdir -p "$Work_folder"
+          sudo chmod 777 "$Work_folder"
+          cd "$Work_folder"
+          git clone -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
       - name: 开始编译
         run: |
+          cd "$Work_folder"
           mkdir server335
           cd TrinityCore
           mkdir build
           cd build
-          cmake ../ -DCMAKE_INSTALL_PREFIX=/home/runner/server335
+          cmake ../ -DCMAKE_INSTALL_PREFIX="$Work_folder"/server335
           make -j $(nproc) install
       - name: 上传固件
         uses: actions/upload-artifact@master
         if: success()
         with:
           name: TrinityCore335_linux_server
-          path: /home/runner/server335
+          path: "$Work_folder"
