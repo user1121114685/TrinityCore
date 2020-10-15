@@ -43,7 +43,7 @@ jobs:
           #sudo chmod 777 "$Work_folder"
           #cd "$Work_folder"
           #mkdir TrinityCore
-          git clone -b 3.3.5 git@github.com:TrinityCore/TrinityCore.git
+          git clone  -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
       - name: 开始编译
         run: |
           cd TrinityCore
