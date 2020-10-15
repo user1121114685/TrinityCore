@@ -34,11 +34,10 @@ jobs:
           sudo apt-get install -y mariadb-server
           #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
           #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
-      - name: 创建工作文件夹
+      - name: 创建文件夹开始克隆
         env:
           #你希望服务端放在你电脑的什么位置。我这里是/mnt/sdb
           Work_folder: ${{ /mnt/sdb }}
-      - name: 克隆TrinityCore
         run: |
           sudo mkdir -p "$Work_folder"
           sudo chmod 777 "$Work_folder"
