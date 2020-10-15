@@ -29,6 +29,8 @@ jobs:
           #sudo chmod 777 /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get install -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev p7zip libmariadb-client-lgpl-dev-compat
+          sudo apt-get autoremove -y mariadb-server
+          sudo apt-get install -y mariadb-server
           #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
           #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
 
@@ -46,5 +48,5 @@ jobs:
         uses: actions/upload-artifact@master
         if: success()
         with:
-          name: TrinityCore335_linux_server.zip
+          name: TrinityCore335_linux_server
           path: /home/runner/server335
