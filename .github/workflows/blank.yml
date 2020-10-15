@@ -37,15 +37,17 @@ jobs:
           git clone  -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
       - name: 开始编译
         run: |
-          cd TrinityCore
           mkdir server335
+          cd TrinityCore
           mkdir build
           cd build
-          cmake ../ -DCMAKE_INSTALL_PREFIX=../server335
+          cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
           make -j $(nproc) install
+          mv ../sql ../../server335
+          sed -i "s/SourceDirectory\ \ \=\ \"\"/SourceDirectory\ \ \=\ \"..\/sql\"/g" ../../server335/etc/worldserver.conf.dist
       - name: 上传固件
         uses: actions/upload-artifact@master
         if: success()
         with:
           name: TrinityCore335_linux_server
-          path: ./TrinityCore
+          path: ./server335
