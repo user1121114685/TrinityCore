@@ -25,24 +25,15 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: 准备环境
         run: |
-          #sudo wget -O /etc/apt/sources.list https://raw.githubusercontent.com/user1121114685/debian_stretch/master/ali-sources.list
-          #sudo chmod 777 /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get install -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev p7zip libmariadb-client-lgpl-dev-compat
-          #sudo apt-get autoremove -y mariadb-server
           sudo apt install -y mariadb-server-10.3
           sudo apt-get install -y mariadb-server
-          #sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
-          #sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin
       - name: 开始克隆源码
         #env:
           #你希望服务端放在你电脑的什么位置。我这里是/mnt/sdb
           #Work_folder: /mnt/sdb
         run: |
-          #sudo mkdir -p "$Work_folder"
-          #sudo chmod 777 "$Work_folder"
-          #cd "$Work_folder"
-          #mkdir TrinityCore
           git clone  -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
       - name: 开始编译
         run: |
@@ -57,4 +48,4 @@ jobs:
         if: success()
         with:
           name: TrinityCore335_linux_server
-          path: /home/runner/TrinityCore
+          path: ./TrinityCore
