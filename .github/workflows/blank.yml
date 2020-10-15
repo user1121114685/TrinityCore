@@ -47,6 +47,7 @@ jobs:
         run: |
           cd "$Work_folder"
           mkdir server335
+          ls
           cd TrinityCore
           mkdir build
           cd build
