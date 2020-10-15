@@ -37,7 +37,7 @@ jobs:
       - name: 创建文件夹开始克隆
         env:
           #你希望服务端放在你电脑的什么位置。我这里是/mnt/sdb
-          Work_folder: ${{ /mnt/sdb }}
+          Work_folder: /mnt/sdb
         run: |
           sudo mkdir -p "$Work_folder"
           sudo chmod 777 "$Work_folder"
