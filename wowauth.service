@@ -1,0 +1,15 @@
+[Unit]
+Description=ShaoXia
+Documentation=https://shaoxia.xyz
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+#DynamicUser=yes
+ExecStart=替换/bin/authserver -c 替换/etc/authserver.conf
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

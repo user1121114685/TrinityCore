@@ -31,20 +31,22 @@ jobs:
           sudo apt-get install -y mariadb-server
       - name: 开始克隆源码
         #env:
-          #你希望服务端放在你电脑的什么位置。我这里是/mnt/sdb
-          #Work_folder: /mnt/sdb
+          # 你希望服务端放在你电脑的什么位置。我这里是/mnt/sdb
+          # Work_folder: /mnt/sdb
         run: |
           git clone  -b 3.3.5 git://github.com/TrinityCore/TrinityCore.git
       - name: 开始编译
         run: |
           mkdir server335
           cd TrinityCore
+          # 单人秒排副本
+          sed -i "s/numPlayers\ \=\ 0\;/numPlayers\ \=\ 4\;/g" ./src/server/game/DungeonFinding/LFGQueue.cpp
           mkdir build
           cd build
           cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
           make -j $(nproc) install
           mv ../sql ../../server335
-          sed -i "s/SourceDirectory\ \ \=\ \"\"/SourceDirectory\ \ \=\ \"..\/sql\"/g" ../../server335/etc/worldserver.conf.dist
+          # sed -i "s/SourceDirectory\ \ \=\ \"\"/SourceDirectory\ \ \=\ \"..\/sql\"/g" ../../server335/etc/worldserver.conf.dist
       - name: 上传固件
         uses: actions/upload-artifact@master
         if: success()
