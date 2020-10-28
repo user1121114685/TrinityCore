@@ -40,7 +40,7 @@ jobs:
           mkdir server335
           cd TrinityCore
           # 单人秒排副本
-          sed -i "s/numPlayers\ \=\ 0\;/numPlayers\ \=\ 4\;/g" ./src/server/game/DungeonFinding/LFGQueue.cpp
+          # sed -i "s/numPlayers\ \=\ 0\;/numPlayers\ \=\ 4\;/g" ./src/server/game/DungeonFinding/LFGQueue.cpp
           mkdir build
           cd build
           cmake ../ -DCMAKE_INSTALL_PREFIX=../../server335
